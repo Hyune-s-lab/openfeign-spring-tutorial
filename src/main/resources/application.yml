@@ -1,0 +1,12 @@
+logging:
+  level:
+    com:
+      example:
+        openfeignspringtutorial:
+          openfeign: DEBUG
+
+feign:
+  client:
+    config:
+      fake-api:
+        logger-level: basic
