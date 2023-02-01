@@ -10,3 +10,7 @@ feign:
     config:
       fake-api:
         logger-level: basic
+
+application:
+  feign-url:
+    fake-api: https://jsonplaceholder.typicode.com
