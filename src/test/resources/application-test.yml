@@ -9,7 +9,7 @@ feign:
   client:
     config:
       fake-api:
-        logger-level: basic
+        logger-level: full
 
 application:
   feign-url:
