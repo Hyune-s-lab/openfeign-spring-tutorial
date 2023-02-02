@@ -7,7 +7,6 @@ import com.github.tomakehurst.wiremock.WireMockServer
 import com.github.tomakehurst.wiremock.client.WireMock
 import com.google.gson.Gson
 import com.google.gson.stream.JsonReader
-import io.kotest.core.spec.Spec
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.shouldBe
 import org.springframework.boot.test.context.SpringBootTest
@@ -46,14 +45,4 @@ internal class FakeApiOpenFeignTest(
             }
         }
     }
-}) {
-    override suspend fun beforeSpec(spec: Spec) {
-        super.beforeSpec(spec)
-        wireMockServer.start()
-    }
-
-    override suspend fun afterSpec(spec: Spec) {
-        super.afterSpec(spec)
-        wireMockServer.stop()
-    }
-}
+})
