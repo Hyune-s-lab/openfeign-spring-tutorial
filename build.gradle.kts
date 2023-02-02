@@ -18,12 +18,28 @@ repositories {
 extra["springCloudVersion"] = "2021.0.5"
 
 dependencies {
+    val kotestVersion = "5.5.4"
+    val kotestExtVersion = "1.1.2"
+
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+
+    // feign mock test
+    testImplementation("com.github.tomakehurst:wiremock-jre8:2.35.0")
+
+    // kotest
+    testImplementation("io.kotest:kotest-runner-junit5:$kotestVersion")
+    testImplementation("io.kotest:kotest-assertions-core:$kotestVersion")
+    testImplementation("io.kotest:kotest-property:$kotestVersion")
+    testImplementation("io.kotest.extensions:kotest-extensions-spring:$kotestExtVersion")
+
+    // gson
+    implementation("com.google.code.gson:gson:2.8.9")
+
 }
 
 dependencyManagement {
