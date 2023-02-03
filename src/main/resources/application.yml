@@ -10,6 +10,7 @@ feign:
     config:
       fake-api:
         logger-level: basic
+        error-decoder: com.example.openfeignspringtutorial.openfeign.FakeApiErrorDecoder
 
 application:
   feign-url:
