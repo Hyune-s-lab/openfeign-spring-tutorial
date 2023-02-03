@@ -1,12 +1,14 @@
 # openfeign-spring-tutorial
 
+[Spring Cloud OpenFeign + WireMock Test](https://hyune-c.tistory.com/57)
+
 ### Environment
 
 - spring-openfeign, wiremock
 
 ## Feature
 
-### OpenFeign 활용
+### OpenFeign
 
 ```http request
 GET http://localhost:8080/posts/3
@@ -24,15 +26,19 @@ Connection: keep-alive
   "title": "ea molestias quasi exercitationem repellat qui ipsa sit aut",
   "body": "et iusto sed quo iure\nvoluptatem occaecati omnis eligendi aut ad\nvoluptatem doloribus vel accusantium quis pariatur\nmolestiae porro eius odio et labore et velit aut"
 }
-
 ```
+
 - 애플리케이션으로 요청이 오면 fake api 를 호출
-  - https://jsonplaceholder.typicode.com
+    - https://jsonplaceholder.typicode.com
+- ErrorDecoder
+    - 400, 500
+- Retryer
+- FallBack (not yet)
 
-### WireMock 을 활용한 테스트 코드 구현
+### 테스트 코드 with WireMock
 
-![image](https://user-images.githubusercontent.com/55722186/216381219-e641abc6-017f-41e8-b5d0-0614ae156a12.png)
+![image](https://user-images.githubusercontent.com/55722186/216709951-f2675874-7141-44db-9b77-899591ce1cbb.png)
 
-- ErrorDecoder 로 bad request 예외 처리
-  - wiremock 으로 test stub 구성
-- FallBack 구현 (not yet)
+- wiremock 으로 test stub 구성
+- 200 외 응답코드 대응
+- retryer 테스트 - stub 서버 강제 중지
