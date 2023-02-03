@@ -66,4 +66,23 @@ internal class FakeApiOpenFeignTest(
             }
         }
     }
+
+    Given("getPosts stub - INTERNAL_SERVER_ERROR") {
+        wireMockServer.stubFor(
+            WireMock.get(WireMock.urlPathMatching(WireMockServerConst.GetPosts.url))
+                .willReturn(
+                    WireMock.serverError()
+                )
+        )
+
+        When("feign 으로 getPost 호출") {
+            val exception = shouldThrow<ResponseStatusException> {
+                fakeApiOpenFeign.getPost(1L)
+            }
+
+            Then("status 확인") {
+                exception.status shouldBe HttpStatus.INTERNAL_SERVER_ERROR
+            }
+        }
+    }
 })

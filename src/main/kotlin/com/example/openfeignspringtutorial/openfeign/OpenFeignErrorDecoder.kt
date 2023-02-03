@@ -28,6 +28,13 @@ class OpenFeignErrorDecoder : ErrorDecoder {
             )
         }
 
+        if (response.status() == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
+            return ResponseStatusException(
+                HttpStatus.valueOf(response.status()),
+                "<You can add error message description here>"
+            )
+        }
+
         return Exception(response.reason())
     }
 }
